@@ -14,11 +14,12 @@ RSpec.describe Organization, type: :model do
   end
 
   context "Searching" do
-    let!(:organization_1) { FactoryBot.create(:organization, name: "Test LLC Org") }
-    let!(:organization_2) { FactoryBot.create(:organization, name: "Potato Org") }
-    let!(:organization_3) { FactoryBot.create(:organization, name: "An LLC Organization") }
-    let!(:organization_4) { FactoryBot.create(:organization, name: "The Office") }
-    let!(:organization_5) { FactoryBot.create(:organization, name: "Wellness Organization") }
+    let!(:organization_1) { FactoryBot.create(:organization, name: "Test LLC Org", id: 1) }
+    let!(:organization_2) { FactoryBot.create(:organization, name: "Potato Org", id: 2) }
+    let!(:organization_3) { FactoryBot.create(:organization, name: "An LLC Organization", id: 3) }
+    let!(:organization_4) { FactoryBot.create(:organization, name: "The Office", id: 4) }
+    let!(:organization_5) { FactoryBot.create(:organization, name: "Swell Corgis", id: 5) }
+    let(:organizations) { Organization.order(:name) }
 
     it "returns all organizations on empty search" do
       filtered = Organization.search_by_name("").count
@@ -38,6 +39,16 @@ RSpec.describe Organization, type: :model do
     it "returns expected number organizations with mixed case input" do
       filtered = Organization.search_by_name("lL").count
       expect(filtered).to eq 3
+    end
+
+    it "returns expected organizations in alphabetical order" do
+      names_and_ids = organizations.search_by_name("org").pluck(:name, :id)
+      expect(names_and_ids).to eq [
+        ["An LLC Organization", 3],
+        ["Potato Org", 2],
+        ["Swell Corgis", 5],
+        ["Test LLC Org", 1]
+      ]
     end
   end
 end
