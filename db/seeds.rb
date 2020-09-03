@@ -9,6 +9,14 @@ def random_password
   rand(100000...900000).to_s
 end
 
+def random_org_id
+  Organization.all.sample.id
+end
+
+def random_user_id
+  User.all.sample.id
+end
+
 user_seeds = [
   {first_name: "Dev", last_name: "Challenger", email: "dev@dundermifflin.com", password: "password1234", password_confirmation: "password1234"},
   {first_name: "Jim", last_name: "Halpert", email: "jim@dundermifflin.com", password: random_password},
@@ -26,7 +34,12 @@ user_seeds.each do |user_seed|
   user = User.create(first_name: user_seed[:first_name], last_name: user_seed[:last_name], email: user_seed[:email], password: user_seed[:password], password_confirmation: user_seed[:password])
 end
 
+puts "Creating Organizations"
 40.times do
-  puts "Creating Organizations"
   org = Organization.create(name: Faker::Company.name, description: Faker::Company.catch_phrase)
+end
+
+puts "Creating Memberships"
+60.times do
+  membership = Membership.create(organization_id: random_org_id, user_id: random_user_id)
 end
