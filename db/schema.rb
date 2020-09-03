@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_013742) do
+ActiveRecord::Schema.define(version: 2020_09_03_022950) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "organization_id", null: false
+    t.index ["organization_id", "user_id"], name: "index_memberships_on_organization_id_and_user_id", unique: true
     t.index ["organization_id"], name: "index_memberships_on_organization_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end

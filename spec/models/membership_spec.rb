@@ -34,4 +34,14 @@ RSpec.describe Membership, type: :model do
     user.destroy
     expect(org.memberships.pluck(:id)).to_not include membership.id
   end
+
+  context "when existing" do
+    it "rejects new membership of existing user/org id pairs" do
+      membership = FactoryBot.create(:membership, organization_id: org.id, user_id: user.id)
+      membership2 = FactoryBot.build(:membership, organization_id: org.id, user_id: user.id)
+      membership2.valid?
+
+      expect(membership2.errors[:organization_id]).to eq ["already has a membership with this user."]
+    end
+  end
 end
