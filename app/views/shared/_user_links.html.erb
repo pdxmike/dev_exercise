@@ -1,0 +1,22 @@
+<li class="item has-submenu" id="top-menu">
+  <% if current_user %>
+    <a tabindex="0">
+      <span id="submenu-title"><%= current_user.full_name %></span>
+      <i class="arrow down"></i>
+      <i class="fas fa-user-circle"></i></a>
+    <ul class="submenu">
+      <li class="subitem"><%= link_to "My Profile", root_path %></li>
+      <li class="subitem"><%= link_to "Logout", logout_path, method: :delete %></li>
+    </ul>
+  <% else %>
+    <a tabindex="0">
+      <span id="submenu-title">Account<span>
+      <i class="arrow down"></i>
+      <i class="fas fa-user-circle"></i>
+    </a>
+    <ul class="submenu">
+      <li class="subitem"><%= link_to "Login", login_path %></li>
+      <li class="subitem"><%= link_to "Sign Up", new_account_path %></li>
+    </ul>
+  <% end %>
+</li>
