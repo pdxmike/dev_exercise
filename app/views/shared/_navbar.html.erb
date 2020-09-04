@@ -1,0 +1,23 @@
+<header>
+  <nav>
+    <ul class="menu">
+      <li class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "listen360-logo", id: "logo-img", alt: "Company Logo" %>
+          Listen360 - Alpharetta, GA
+        <% end %>
+      </li>
+      <li class="item has-submenu">
+        <a tabindex="0">Mike User</a>
+        <ul class="submenu">
+            <li class="subitem"><%= link_to "My Profile", root_path %></li>
+            <li class="subitem"><%= link_to "Random Link", root_path %></li>
+        </ul>
+      </li>
+      <li class="item"><%= link_to "Log In", login_path %></li>
+      <li class="item"><%= link_to "Sign Up", new_account_path %></li>
+      <li class="item"><%= link_to "Log Out", logout_path, method: :delete %></li>
+      <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
+  </nav>
+</header>
