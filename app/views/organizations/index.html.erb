@@ -8,4 +8,12 @@
 
 <%= button_to "View All", organizations_path, method: :get %>
 
-<%= render @organizations %>
+
+<div class="wrapper">
+  <% if @search_name %>
+    <h1 class="results-header">
+      <%= "#{pluralize(@search_result_count, 'result')} for '#{@search_name}'" %>
+    </h1>
+  <% end %>
+  <%= render @organizations %>
+</div>
