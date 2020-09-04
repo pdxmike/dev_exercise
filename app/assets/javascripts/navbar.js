@@ -16,10 +16,10 @@ document.addEventListener("turbolinks:load", function () {
     }
   }
 
-  /* Event Listener */
   toggle.addEventListener("click", toggleMenu, false);
 
-  /* Activate Submenu */
+
+  /* Submenu */
   function toggleItem() {
     if (this.classList.contains("submenu-active")) {
       this.classList.remove("submenu-active");
@@ -37,4 +37,14 @@ document.addEventListener("turbolinks:load", function () {
       item.addEventListener("keypress", toggleItem, false);
     }
   }
+
+  function closeSubmenu(e) {
+    let isClickInside = menu.contains(e.target);
+
+    if (!isClickInside && menu.querySelector(".submenu-active")) {
+      menu.querySelector(".submenu-active").classList.remove("submenu-active");
+    }
+  }
+
+  document.addEventListener("click", closeSubmenu, false);
 })
