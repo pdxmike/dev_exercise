@@ -49,6 +49,11 @@ body {
   padding-bottom: 5px;
 }
 
+.card-title-center {
+  text-align: center;
+  margin-top: 15px;
+}
+
 h1.card-title > a:link,
 h1.card-title > a:hover,
 h1.card-title > a:visited {
