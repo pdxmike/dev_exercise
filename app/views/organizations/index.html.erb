@@ -1,19 +1,20 @@
 <% provide(:title, "All Organizations") %>
 
-<%= form_with url: organizations_path, skip_enforcing_utf8: true, method: :get, local: true do |f| %>
-  <%= f.label :name, "Find Organization" %>
-  <%= f.text_field :name, id: :name, value: params[:name], autofocus: true %>
-  <%= f.submit "Search", name: nil %>
-<% end %>
-
-<%= button_to "View All", organizations_path, method: :get %>
-
-
 <div class="wrapper">
+  <div class="search-box-wrapper">
+    <%= form_with url: organizations_path, skip_enforcing_utf8: true, method: :get, local: true do |f| %>
+      <%= f.text_field :name, id: :name, class: "search-input", placeholder: "Find Organization", value: params[:name], autofocus: true
+      %>
+      <%= f.submit "Search", class: "button", name: nil %>
+    <% end %>
+  </div>
+
   <% if @search_name %>
     <h1 class="results-header">
       <%= "#{pluralize(@search_result_count, 'result')} for '#{@search_name}'" %>
     </h1>
+    <%= button_to "Clear Search", organizations_path, class: "button", method: :get %>
   <% end %>
+
   <%= render @organizations %>
 </div>
