@@ -8,11 +8,11 @@ document.addEventListener("turbolinks:load", function () {
     if (menu.classList.contains("active")) {
       menu.classList.remove("active");
 
-      toggle.querySelector("a").innerHTML = '<i class="fas fa-bars"></i>';
+      toggle.querySelector("a").innerHTML = '<i class="fas fa-bars"  aria-hidden="true"></i><span class="sr-only">Menu</span>';
     } else {
       menu.classList.add("active");
 
-      toggle.querySelector("a").innerHTML = '<i class="fas fa-times"></i>';
+      toggle.querySelector("a").innerHTML = '<i class="fas fa-times" aria-hidden="true"></i><span class="sr-only">Close</span>';
     }
   }
 
