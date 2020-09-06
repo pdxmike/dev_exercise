@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <title>DevExercise</title>
     <%= csrf_meta_tags %>
@@ -7,21 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
-    <% if current_user %>
-      <!-- current_user will return true if a user is logged in -->
-      <%= "Logged in as #{current_user.email}" %> | <%= link_to 'Home', root_path %> | <%= link_to 'Log Out', logout_path, method: :delete %>
-    <% else %>
-      <!-- not logged in -->
-      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_account_path %>
-    <% end %>
-    <hr>
+    <%= render "shared/navbar" %>
     <% if notice %>
       <%= notice %>
     <% end %>
-    
+
     <% if alert %>
       <%= alert %>
     <% end %>

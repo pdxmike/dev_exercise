@@ -1,6 +1,17 @@
 <% provide(:title, @organization.name) %>
 
-<%= @organization.name %>
-<%= link_to("Back to All Organizations", organizations_path) %>
-
-Description: <%= @organization.description %>
+<div class="wrapper">
+  <div class="card">
+    <h1 class="card-title card-title-center"><%= @organization.name %></h1>
+    <hr>
+    <p class="card-description"><%= @organization.description %></p>
+  </div>
+  <div class="card">
+    <h1 class="card-title card-title-center">Members (<%= @members_count %>)</h1>
+    <hr>
+    <% @members.each do |member| %>
+      <p class="card-description"><%= member.full_name %>: <%= member.email %></p>
+    <% end %>
+  </div>
+  <%= link_to "Back to All Organizations", organizations_path %>
+</div>

@@ -36,7 +36,7 @@ end
 
 puts "Creating Organizations"
 40.times do
-  org = Organization.create(name: Faker::Company.name, description: Faker::Company.catch_phrase)
+  org = Organization.create(name: Faker::Company.name, description: Faker::Lorem.paragraph_by_chars)
 end
 
 puts "Creating Memberships"
