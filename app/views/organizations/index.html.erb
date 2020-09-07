@@ -4,8 +4,7 @@
   <div class="search-box-wrapper">
     <%= form_with url: organizations_path, skip_enforcing_utf8: true, method: :get, local: true do |f| %>
       <%= f.label :name, class: "hidden-label" %>
-      <%= f.text_field :name, id: :name, class: "search-input", placeholder: "Find Organization", value: params[:name], autofocus: true
-      %>
+      <%= f.text_field :name, id: :name, class: "search-input", placeholder: "Find Organization", value: params[:name] %>
       <%= f.submit "Search", class: "button", name: nil %>
     <% end %>
   </div>
@@ -17,5 +16,9 @@
     <%= button_to "Clear Search", organizations_path, class: "button", method: :get %>
   <% end %>
 
-  <%= render @organizations %>
+  <main>
+    <ol class="wrapper">
+      <%= render @organizations %>
+    </ol>
+  </main>
 </div>
