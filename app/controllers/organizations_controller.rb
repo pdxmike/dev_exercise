@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @search_name = params[:name]
-    @organizations = Organization.order(:name)
+    @organizations = Organization.all
     @organizations = @organizations.search_by_name(@search_name) if @search_name.present?
     @search_result_count = @organizations.count
   end
