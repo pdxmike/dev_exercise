@@ -1,6 +1,6 @@
 <% provide(:title, @organization.name) %>
 
-<div class="wrapper">
+<main class="wrapper">
   <div class="card">
     <h1 class="card-title card-title-center"><%= @organization.name %></h1>
     <hr>
@@ -13,5 +13,5 @@
       <p class="card-description"><%= member.full_name %>: <%= member.email %></p>
     <% end %>
   </div>
-  <%= link_to "Back to All Organizations", organizations_path %>
-</div>
+  <%= link_to "Back to All Organizations", organizations_path, class: "button" %>
+</main>
